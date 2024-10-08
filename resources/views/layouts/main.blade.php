@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/gijgo.css">
     <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -35,19 +35,20 @@
             <div id="sticky-header" class="main-header-area">
                 <div class="container-fluid p-0">
                     <div class="row align-items-center justify-content-between no-gutters">
-                        <div class="col-xl-2 col-lg-2">
+                        <div class="col-xl-1 col-lg-1">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="main-menu  d-none d-lg-block mx-5">
+                        <div class="col-xl-8 col-lg-8">
+                            <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">home</a></li>
                                         <li><a href="/about">About</a></li>
+                                        <li><a href="/lawyers">lawyers</a></li>
                                         <li><a href="/case">Cases</a></li>
                                         <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
@@ -56,12 +57,15 @@
                                             </ul>
                                         </li>
                                         <li><a href="/contact">Contact</a></li>
+                                        <li><div class="hearer_icon d-flex align-items-center">
+                                            <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
+                                        </div></li>
 
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="mx-auto">
                                 <ul>
                                     <a href="/appointment" class="boxed-btn5 btn">Appointment</a>
@@ -76,6 +80,15 @@
                 </div>
             </div>
         </div>
+        <div class="search_input" id="search_input_box">
+            <div class="container ">
+                <form class="d-flex justify-content-between search-inner">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <button type="submit" class="btn"></button>
+                    <span class="ti-close" id="close_search" title="Close Search"></span>
+                </form>
+            </div>
+        </div>
     </header>
     <!-- header-end -->
 
@@ -88,7 +101,7 @@
     </div>
 
     <!-- footer_start -->
-    <footer class="footer">
+    <footer class="footer mt-5">
         <div class="footer_top">
             <div class="container">
                 <div class="row">

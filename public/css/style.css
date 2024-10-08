@@ -434,7 +434,7 @@ h3 {
   background: #F2C64D;
   color: #fff;
   display: inline-block;
-  padding: 15px 44px;
+  /* padding: 15px 44px; */
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -5303,3 +5303,109 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* line 29, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+.main_menu #search_1 {
+    padding-top: 4px;
+  }
+
+  /* line 31, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_1 i {
+    color: #000;
+  }
+
+  /* line 35, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_input_box {
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1140px;
+    z-index: 999;
+    text-align: center;
+    background: #B08EAD;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* line 49, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_input_box ::placeholder {
+    color: #fff;
+  }
+
+  @media (max-width: 991px) {
+    /* line 35, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+    .main_menu #search_input_box {
+      margin-top: 15px;
+    }
+  }
+
+  /* line 58, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_input_box .form-control {
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  /* line 66, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_input_box .btn {
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  /* line 72, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu #search_input_box .ti-close {
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px;
+    padding-right: 0;
+  }
+
+  /* line 79, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu .search-inner {
+    padding: 5px 5px;
+  }
+
+  /* line 82, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu .form-control:focus {
+    box-shadow: none;
+  }
+
+  /* line 85, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu .active_color {
+    color: #f5790b !important;
+  }
+
+  /* line 89, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu a i {
+    color: #4B3049 !important;
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    margin-left: 30px;
+  }
+
+  /* line 98, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu .cart .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border: 0px solid transparent;
+  }
+
+  /* line 106, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_menu.scss */
+  .main_menu .cart i {
+    position: relative;
+    z-index: 1;
+  }

@@ -38,6 +38,14 @@ Route::get('/appointment', function () {
     return view('appointment');
 });
 
+Route::get('/lawyers', function () {
+    return view('lawyers');
+});
+
+Route::get('/admin/home', function () {
+    return view('admin/index');
+});
+
 
 Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
     Route::get('/login', [AdminController::class, 'loginForm']);
