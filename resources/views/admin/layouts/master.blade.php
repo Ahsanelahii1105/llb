@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>E-Study - Admin</title>
+    <title>Lawyers - Admin</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ asset('assets/img/kaiadmin/lg.png') }}" type="image/x-icon" />
 
@@ -70,7 +70,7 @@
                 <div class="sidebar-content">
                     <ul class="nav nav-secondary">
                         <li class="nav-item active">
-                            <a href="/admin/home">
+                            <a href="/admin/index">
                                 <i class="fas fa-home"></i>
                                 <p>Dashboard</p>
                                 <span class="caret"></span>
@@ -91,8 +91,8 @@
                             <div class="collapse" id="base">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="/admin/insertsubject">
-                                            <span class="sub-item">Insert Index Course Data</span>
+                                        <a href="/admin/caseInsert">
+                                            <span class="sub-item">Insert about Cases</span>
                                         </a>
                                     </li>
                                     <li>
@@ -137,18 +137,13 @@
                             <div class="collapse" id="sidebarLayouts">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="/admin/contactfetch">
-                                            <span class="sub-item">Contact Fetch Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/bookfetch">
-                                            <span class="sub-item">Booking Class Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/regfetch">
+                                        <a href="/admin/regtable">
                                             <span class="sub-item">User Registration Fetch</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/contactdetail">
+                                            <span class="sub-item">User Contact Data</span>
                                         </a>
                                     </li>
                                 </ul>

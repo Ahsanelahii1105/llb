@@ -12,7 +12,6 @@
                                 <h3>Leading Polish <br>
                                     Lawyer in your city</h3>
                                 <p class="name">- Robert</p>
-                                <a href="#" class="boxed-btn4 ">Make an Appointment</a>
                             </div>
                         </div>
                     </div>

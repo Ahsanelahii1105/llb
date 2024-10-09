@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
+            $table->string('case_title');
+            $table->string('case_shortdesc');
+            $table->string('case_details');
             $table->timestamps();
         });
     }

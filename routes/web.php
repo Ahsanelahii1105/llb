@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\cases;
+use App\Models\lawyers;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\userController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LawyerController;
-use App\Http\Controllers\userController;
-
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,27 +31,33 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/case', function () {
-    return view('case');
-});
+Route::get('/admin/caseInsert', [AdminController::class, 'casecreate']);
+Route::post('/admin/caseInsert', [AdminController::class, 'casestore']);
+Route::get('/case', [AdminController::class, 'casedetails']);
+Route::get('/', [AdminController::class, 'caseIndexdetails'])->name('index');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+
+// Route::get('/case', function () {
+//     return view('case');
+// });
+
+Route::get('/contact', [userController::class, 'contactcreate']);
+Route::post('/contact', [userController::class, 'contactstore']);
+Route::get('/admin/contactdetail', [userController::class, 'contactIndexdetails']);
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
 
 Route::get('/appointment', [userController::class, 'appointmentcreate']);
 Route::post('/appointment', [userController::class, 'appointmentstore']);
 Route::get('/lawyers/client', [userController::class, 'clientdetails']);
 
-// Route::get('/appointment', function () {
-//     return view('appointment');
+// Route::get('/lawyers', function () {
+//     return view('lawyers');
 // });
 
-Route::get('/lawyers', function () {
-    return view('lawyers');
-});
-
-Route::get('/admin/home', function () {
+Route::get('/admin/index', function () {
     return view('admin/index');
 });
 
@@ -57,34 +65,28 @@ Route::get('/lawyerindex', function () {
     return view('lawyers/index');
 });
 
+Route::get('/admin/regtable', function () {
+    return view('admin/regtable');
+});
+
+// Route::get('/casesDetails', function () {
+//     return view('casesDetails');
+// });
+
 //------------------------ for lawyer data
 Route::get('/lawyers/insertlawyer', [LawyerController::class, 'lawyercreate']);
 Route::post('/lawyers/insertlawyer', [LawyerController::class, 'lawyerstore']);
-// Route::get('/lawyers', [LawyerController::class, 'lawyerdetails'])->name('lawyers.details');
-
-// Route::get('/lawyerInsert', function () {
-//     return view('lawyers/lawyerInsert');
-// });
-
-// Route::get('/lawyerclient', function () {
-//     return view('lawyers/client');
-// });
+Route::get('/lawyers', [LawyerController::class, 'lawyerdetails']);
 
 Route::get('/index', function () {
     return view('lawyers/index');
 });
 
 
-Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
-    Route::get('/login', [AdminController::class, 'loginForm']);
-    Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
-   });
 
-
-
-//    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-//        return view(view: 'dashboard');
-//    })->name('dashboard');
+Route::get('/login', function(){
+    return view('auth.login');
+})->name('login');
 
 Route::middleware([
     'auth:sanctum',
@@ -92,6 +94,14 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        if(Auth::User()->role==1){
+            return view('admin.index');
+        }else{
+            $lawyers = lawyers::all();
+            $case = cases::all();
+            return view('index', compact([("lawyers"), ("case")]));
+        }
     })->name('dashboard');
 });
+
+Route::get('/admin/regtable' , [AdminController::class , 'regtable']);

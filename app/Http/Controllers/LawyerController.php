@@ -36,8 +36,10 @@ class LawyerController extends Controller
         return redirect()->back()->with('success', 'Succesfully Registered');
     }
 
-
-
-
+    public function lawyerdetails()
+    {
+        $lawyers = lawyers::all();
+        return view('lawyers', compact('lawyers'));
+    }
 
 }

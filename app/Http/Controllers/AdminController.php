@@ -1,114 +1,44 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Contracts\Auth\StatefulGuard;
+use App\Models\cases;
+use App\Models\lawyers;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Routing\Pipeline;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
-use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
-use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
-// use Laravel\Fortify\Contracts\LoginResponse;
-use App\Http\Responses\LoginResponse;
-use Laravel\Fortify\Contracts\LoginViewResponse;
-use Laravel\Fortify\Contracts\LogoutResponse;
-use Laravel\Fortify\Features;
-use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Http\Requests\LoginRequest;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    /**
-     * The guard implementation.
-     *
-     * @var \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected $guard;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
-     * @return void
-     */
-    public function __construct(StatefulGuard $guard)
-    {
-        $this->guard = $guard;
+    public function regtable(){
+        $reg = User::all();
+        return view('admin/regtable', compact(['reg']));
     }
 
-    public function loginForm(){
-        return view('auth.login',['guard' => 'admin']);
-       }
 
-    /**
-     * Show the login view.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Laravel\Fortify\Contracts\LoginViewResponse
-     */
-    public function create(Request $request): LoginViewResponse
-    {
-        return app(LoginViewResponse::class);
+    public function casecreate(){
+        return view('admin.caseinsert');
     }
 
-    /**
-     * Attempt to authenticate a new session.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
-     * @return mixed
-     */
-    public function store(LoginRequest $request)
-    {
-        return $this->loginPipeline($request)->then(function ($request) {
-            return app(LoginResponse::class);
-        });
+    public function casestore(Request $request){
+        $case = new cases();
+        $case->case_title = $request->title;
+        $case->case_shortdesc = $request->desc;
+        $case->case_details = $request->details;
+
+        $case->save();
+        return redirect()->back()->with('success', 'Succesfully Insert');
     }
 
-    /**
-     * Get the authentication pipeline instance.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
-     * @return \Illuminate\Pipeline\Pipeline
-     */
-    protected function loginPipeline(LoginRequest $request)
+    public function casedetails()
     {
-        if (Fortify::$authenticateThroughCallback) {
-            return (new Pipeline(app()))->send($request)->through(array_filter(
-                call_user_func(Fortify::$authenticateThroughCallback, $request)
-            ));
-        }
-
-        if (is_array(config('fortify.pipelines.login'))) {
-            return (new Pipeline(app()))->send($request)->through(array_filter(
-                config('fortify.pipelines.login')
-            ));
-        }
-
-        return (new Pipeline(app()))->send($request)->through(array_filter([
-            config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
-            Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,
-            AttemptToAuthenticate::class,
-            PrepareAuthenticatedSession::class,
-        ]));
+        $case = cases::all();
+        return view('case', compact('case'));
     }
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Laravel\Fortify\Contracts\LogoutResponse
-     */
-    public function destroy(Request $request): LogoutResponse
+    public function caseIndexdetails()
     {
-        $this->guard->logout();
-
-        if ($request->hasSession()) {
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-        }
-
-        return app(LogoutResponse::class);
+        $case = cases::paginate(4)->all();
+        $lawyers = lawyers::paginate(4)->all();
+        return view('/index', compact(("case"),("lawyers")),);
     }
 }
