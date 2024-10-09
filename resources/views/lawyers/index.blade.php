@@ -1,0 +1,2 @@
+@extends('lawyers.layout.main')
+

@@ -1,5 +1,11 @@
 @extends('layouts.main')
 
+@push('title')
+
+    <title>Lawyers - Lawyers</title>
+
+@endpush
+
 @section('content')
 
     <div class="container mt-5">

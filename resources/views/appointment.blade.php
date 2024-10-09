@@ -18,22 +18,20 @@
                     <h3>Make an Appointment</h3>
                     <p>Many variations of passages of Lorem Ipsum available, but the majority have suffered
                         alteration in some.</p>
-                    <form action="#">
+                    <form action="/appointment" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-xl-6 col-md-6">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" placeholder="Your Name" name="name">
                             </div>
                             <div class="col-xl-6 col-md-6">
-                                <input type="email" placeholder="Your Email">
+                                <input type="email" placeholder="Your Email" name="email">
                             </div>
                             <div class="col-xl-6 col-md-6">
-                                <input type="text" placeholder="Phone no.">
-                            </div>
-                            <div class="col-xl-6 col-md-6">
-                                <input id="datepicker" placeholder="Appointment date">
+                                <input type="text" placeholder="Phone no." name="phone">
                             </div>
                             <div class="col-xl-12">
-                                <textarea placeholder="Message"></textarea>
+                                <textarea placeholder="Message" name="message"></textarea>
                             </div>
                             <div class="col-xl-12">
                                 <div class="appoinment_button">
