@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('appointment_email');
             $table->string('appointment_phone');
             $table->string('appointment_message');
+            $table->string('status');
             $table->timestamps();
         });
     }

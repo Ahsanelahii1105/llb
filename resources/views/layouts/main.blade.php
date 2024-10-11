@@ -2,6 +2,13 @@
 <html class="no-js" lang="zxx">
 
 <head>
+
+    <style>
+        .mrg{
+            display: inline-block;
+        }
+    </style>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     @stack('title')
@@ -66,11 +73,31 @@
                                 </nav>
                             </div>
                         </div>
+
+
+
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="mx-auto">
                                 <ul>
+                                    <div class="mrg">
                                     <a href="/appointment" class="boxed-btn5 btn">Appointment</a>
-                                    <a href="/login" class="btn boxed-btn5">login</a>
+                                </div>
+                                    {{-- <a href="/login" class="btn boxed-btn5">login</a> --}}
+                                    <div class="mrg">
+                                    @if (Route::has('login'))
+                                            @auth
+                                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-danger" @click.prevent="$root.submit();">
+                                                        {{ __('Log Out') }}
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <a href="{{ route('login') }}" class="btn boxed-btn5">Log
+                                                    in</a>
+                                            @endauth
+                                    @endif
+                                </div>
                                 </ul>
                             </div>
                         </div>

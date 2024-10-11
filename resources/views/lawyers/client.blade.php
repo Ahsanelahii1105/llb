@@ -85,6 +85,8 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Message</th>
+                    <th>Status</th>
+                    <th>Appointment Date</th>
                     <th>Set Appointment</th>
                 </tr>
             </thead>
@@ -96,6 +98,10 @@
                         <td data-label="Email">{{ $client->appointment_email }}</td>
                         <td data-label="Phone">{{ $client->appointment_phone }}</td>
                         <td data-label="Message">{{ $client->appointment_message }}</td>
+                        <td data-label="Status">{{ $client->status }}</td>
+                        <td data-label="Appointment Date and Time">
+                            {{ \Carbon\Carbon::parse($client->appointment_date)->format('Y-m-d H:i') }}
+                        </td>
                         <td data-label="Set Appointment">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
@@ -103,6 +109,7 @@
                             </button>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
 
@@ -115,16 +122,17 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="{{ route('setAppointment', $client->id) }}" method="POST">
                             @csrf
-                            <div class="col-xl-6 col-md-6">
-                                <input id="datepicker" placeholder="Appointment date" class="form-control">
+                            <div class="form-group">
+                                <label for="appointment_date">Select Date and Time</label>
+                                <input type="datetime-local" name="appointment_date" class="form-control" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

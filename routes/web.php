@@ -53,6 +53,9 @@ Route::get('/appointment', [userController::class, 'appointmentcreate']);
 Route::post('/appointment', [userController::class, 'appointmentstore']);
 Route::get('/lawyers/client', [userController::class, 'clientdetails']);
 
+Route::post('/lawyers/appointment/{id}/set', [LawyerController::class, 'setAppointment'])->name('setAppointment');
+
+
 // Route::get('/lawyers', function () {
 //     return view('lawyers');
 // });

@@ -145,19 +145,20 @@
 
         <x-validation-errors class="mb-4" />
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-
         <div class="background">
             <div class="shape"></div>
             <div class="shape"></div>
         </div>
         <form method="POST" action="{{ route('login') }}">
             <h3>Login Here</h3>
+
+            <div>
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
 
             @csrf
 

@@ -95,36 +95,6 @@
                                             <span class="sub-item">Insert about Cases</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/admin/insertclass">
-                                            <span class="sub-item">Insert Index class Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/insertcourse">
-                                            <span class="sub-item">Insert Course Page Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/insertsub">
-                                            <span class="sub-item">Insert Subject Page Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/insertfaculty">
-                                            <span class="sub-item">Insert Faculty Data</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/quizIndex">
-                                            <span class="sub-item">Teacher Question</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/insertModular">
-                                            <span class="sub-item">Modular Insert</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
